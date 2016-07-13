@@ -3,7 +3,7 @@
 use gtfs1;
 
 CREATE TABLE `agency` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     agency_id VARCHAR(100),
     agency_name VARCHAR(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `agency` (
 );
 
 CREATE TABLE `calendar_dates` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     service_id VARCHAR(255) NOT NULL,
     `date` VARCHAR(8) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `calendar_dates` (
 );
 
 CREATE TABLE `calendar` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     service_id VARCHAR(255) NOT NULL,
     monday TINYINT(1) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `frequencies` (
 );
 
 CREATE TABLE `routes` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     route_id VARCHAR(100),
     agency_id VARCHAR(50),
@@ -105,7 +105,7 @@ CREATE TABLE `routes` (
 );
 
 CREATE TABLE `shapes` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     shape_id VARCHAR(100) NOT NULL,
     shape_pt_lat DECIMAL(8,6) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `shapes` (
 );
 
 CREATE TABLE `stop_times` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     trip_id VARCHAR(100) NOT NULL,
     arrival_time VARCHAR(8) NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE `stop_times` (
 );
 
 CREATE TABLE `stops` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     stop_id VARCHAR(255),
     stop_code VARCHAR(50),
@@ -170,7 +170,7 @@ CREATE TABLE `transfers` (
 );
 
 CREATE TABLE `trips` (
-    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
     transit_system VARCHAR(50) NOT NULL,
     route_id VARCHAR(100) NOT NULL,
     service_id VARCHAR(100) NOT NULL,
