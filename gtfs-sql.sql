@@ -1,5 +1,9 @@
+# from https://github.com/r-k-b/gtfs-mysql
+
+use gtfs1;
+
 CREATE TABLE `agency` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     agency_id VARCHAR(100),
     agency_name VARCHAR(255) NOT NULL,
@@ -11,17 +15,17 @@ CREATE TABLE `agency` (
 );
 
 CREATE TABLE `calendar_dates` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     service_id VARCHAR(255) NOT NULL,
     `date` VARCHAR(8) NOT NULL,
     exception_type TINYINT(2) NOT NULL,
     KEY `service_id` (service_id),
-    KEY `exception_type` (exception_type)    
+    KEY `exception_type` (exception_type)
 );
 
 CREATE TABLE `calendar` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     service_id VARCHAR(255) NOT NULL,
     monday TINYINT(1) NOT NULL,
@@ -31,7 +35,7 @@ CREATE TABLE `calendar` (
     friday TINYINT(1) NOT NULL,
     saturday TINYINT(1) NOT NULL,
     sunday TINYINT(1) NOT NULL,
-    start_date VARCHAR(8) NOT NULL,	
+    start_date VARCHAR(8) NOT NULL,
     end_date VARCHAR(8) NOT NULL,
     KEY `service_id` (service_id)
 );
@@ -85,13 +89,13 @@ CREATE TABLE `frequencies` (
 );
 
 CREATE TABLE `routes` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     route_id VARCHAR(100),
     agency_id VARCHAR(50),
     route_short_name VARCHAR(50) NOT NULL,
     route_long_name VARCHAR(255) NOT NULL,
-    route_type VARCHAR(2) NOT NULL, 
+    route_type VARCHAR(2) NOT NULL,
     route_text_color VARCHAR(255),
     route_color VARCHAR(255),
     route_url VARCHAR(255),
@@ -101,7 +105,7 @@ CREATE TABLE `routes` (
 );
 
 CREATE TABLE `shapes` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     shape_id VARCHAR(100) NOT NULL,
     shape_pt_lat DECIMAL(8,6) NOT NULL,
@@ -112,7 +116,7 @@ CREATE TABLE `shapes` (
 );
 
 CREATE TABLE `stop_times` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     trip_id VARCHAR(100) NOT NULL,
     arrival_time VARCHAR(8) NOT NULL,
@@ -135,7 +139,7 @@ CREATE TABLE `stop_times` (
 );
 
 CREATE TABLE `stops` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     stop_id VARCHAR(255),
     stop_code VARCHAR(50),
@@ -166,7 +170,7 @@ CREATE TABLE `transfers` (
 );
 
 CREATE TABLE `trips` (
-    id INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(50) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     transit_system VARCHAR(50) NOT NULL,
     route_id VARCHAR(100) NOT NULL,
     service_id VARCHAR(100) NOT NULL,
@@ -176,7 +180,7 @@ CREATE TABLE `trips` (
     direction_id TINYINT(1), #0 for one direction, 1 for another.
     block_id VARCHAR(11),
     shape_id VARCHAR(11),
-    wheelchair_accessible TINYINT(1), #0 for no information, 1 for at 
+    wheelchair_accessible TINYINT(1), #0 for no information, 1 for at
     # least one rider accommodated on wheel chair, 2 for no riders
     # accommodated.
     bikes_allowed TINYINT(1), #0 for no information, 1 for at least
